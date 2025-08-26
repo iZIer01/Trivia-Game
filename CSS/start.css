@@ -1,0 +1,35 @@
+.background{
+    background: #1f1c37;
+}
+
+main{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main button{
+    padding: 2rem  4rem;
+    outline: none;
+    border: none;
+    border-radius: .5rem;
+
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #F7F7F7;
+    background-color:#FCC61D
+}
+
+.startBtn:hover {background-color:#ca9e19}
+
+.startBtn:active {
+  background-color: #a48509;
+  box-shadow: 0 5px #8e7631;
+  transform: translateY(4px);
+}
