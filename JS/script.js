@@ -33,16 +33,35 @@ fetchData().then(function(returnedTrivia){
         incorrectAns:triviaQuestion.incorrect_answers,
     }
     
-    triviaDisplay(triviaData.questions)
+    triviaDisplay(triviaData.questions,triviaQuestion.incorrect_answers,triviaData.correctAns)
 })
 
 //function to display the trivia
 
-function triviaDisplay(question){
+function triviaDisplay(question,wrongAns,rightAns){
     //my variable
     const textContainer = document.querySelector(".textContainer")
+    const optionContainer = document.querySelector(".optionContainer")
+    
+    
+    // manipulating the dom
     textContainer.innerText = question
+    
+    // adding my wrong and right answer in the same array 
+    const allOption = [rightAns,...wrongAns]
+    allOption.sort(function(){
+       return Math.random() - 0.5
+    })
+
+    allOption.forEach(option=>{
+        //create a button
+        const button = document.createElement("button")
+        button.classList.add("optionBtn")
+        button.innerText = option
+
+        optionContainer.appendChild(button)
+    })
+
     
 }
 
-triviaDisplay()
