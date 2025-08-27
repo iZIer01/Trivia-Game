@@ -60,7 +60,7 @@ main{
     background-color: var(--textColor);
     width: 100%;
     height: 25rem;
-    border: 0.2rem solid;
+    border: 0.5rem solid;
     border-image: linear-gradient(to right,#287680, #8533a0, #c560ae) 1;
     box-sizing: border-box; 
     margin: 0; 
@@ -90,4 +90,77 @@ main{
     font-size: 1.2rem;
     cursor: pointer;
     display: block; /* ensures button fills grid cell */
+}
+
+/* Base style for all option buttons */
+.optionBtn {
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0.6em 2em;
+  border: 2px solid #ccc;
+  border-radius: 0.25em;
+  font-size: 1.2em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* Glowing green when correct */
+.correct {
+  border: 299f11 solid 0.15em;
+  color: 299f11;
+  background-color: #4dec4df6;
+  position: relative;
+  overflow: hidden;
+}
+
+.correct::after, .correct::before {
+  content: "";
+  position: absolute;
+  width: 9em;
+  aspect-ratio: 1;
+  background: #299f11;
+  opacity: 50%;
+  border-radius: 50%;
+  transition: transform 500ms, background 300ms;
+}
+
+.correct::before {
+  left: 0;
+  transform: translateX(-8em);
+}
+
+.correct::after {
+  right: 0;
+  transform: translateX(8em);
+}
+
+.correct:hover:before {
+  transform: translateX(-1em);
+}
+
+.correct:hover:after {
+  transform: translateX(1em);
+}
+
+.correct:active {
+  color: #212121;
+  border-color: teal;
+}
+
+.correct:active:before,
+.correct:active:after {
+  background: teal;
+}
+
+/* Red background when wrong */
+.wrong {
+  background-color: #ca2614;
+  color: white;
+  border: 2px solid #a01200;
 }
