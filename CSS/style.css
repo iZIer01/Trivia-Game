@@ -38,6 +38,8 @@ main{
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1px);
     -webkit-backdrop-filter: blur(5px);
+
+display: block;
 }
 
 .pointsContainer{
@@ -87,9 +89,7 @@ main{
 .optionBtn {
     width: 100%;
     height: 100%;
-    font-size: 1.2rem;
     cursor: pointer;
-    display: block; /* ensures button fills grid cell */
 }
 
 /* Base style for all option buttons */
@@ -100,53 +100,26 @@ main{
   justify-content: center;
   margin: 0;
   padding: 0.6em 2em;
-  border: 2px solid #ccc;
+  border: .3rem solid #eff0fe;
   border-radius: 0.25em;
   font-size: 1.2em;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  background-color: #f0f0f0;
-  color: #333;
+  background-image: radial-gradient(#1f1c37,#3338A0);
+  color: var(--textColor);
 }
 
 /* Glowing green when correct */
 .correct {
-  border: 299f11 solid 0.15em;
-  color: 299f11;
-  background-color: #4dec4df6;
+  border: #299f11 solid 0.15em;
+  color: var(--textColor);
+  background-image: radial-gradient(#4dec4df6,#299f11);;
   position: relative;
   overflow: hidden;
 }
 
-.correct::after, .correct::before {
-  content: "";
-  position: absolute;
-  width: 9em;
-  aspect-ratio: 1;
-  background: #299f11;
-  opacity: 50%;
-  border-radius: 50%;
-  transition: transform 500ms, background 300ms;
-}
 
-.correct::before {
-  left: 0;
-  transform: translateX(-8em);
-}
-
-.correct::after {
-  right: 0;
-  transform: translateX(8em);
-}
-
-.correct:hover:before {
-  transform: translateX(-1em);
-}
-
-.correct:hover:after {
-  transform: translateX(1em);
-}
 
 .correct:active {
   color: #212121;
@@ -161,6 +134,13 @@ main{
 /* Red background when wrong */
 .wrong {
   background-color: #ca2614;
+  background-image: radial-gradient(#9a3b3b,#f40707);
+
   color: white;
   border: 2px solid #a01200;
+}
+
+.wrong:hover{
+    background-image: radial-gradient(#f40707,#9a3b3b);
+
 }

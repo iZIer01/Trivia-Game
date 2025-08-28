@@ -1,5 +1,6 @@
-let allTrivia = [];      // Store all fetched questions
-let currentIndex = 0;    // Track which question we're on
+let allTrivia = [];      
+let currentIndex = 0;    
+let points = 0 
 
 // Fetch all trivia at once and start game
 function fetchData(){
@@ -20,7 +21,7 @@ function fetchData(){
 // Show the current question
 function showNextQuestion() {
     if (currentIndex >= allTrivia.length) {
-        alert("🎉 You've completed all questions!");
+        alert(" You've completed all questions!");
         return;
     }
 
@@ -59,19 +60,24 @@ function triviaDisplay(question, wrongAns, rightAns){
 
 // Handle correct/wrong answer
 function selectOption(btn, correctAns){
+    const point = document.getElementById("points");
+    
+
     const selected = btn.innerText;
 
     if (selected === correctAns) {
         btn.classList.add("correct");
         setTimeout(() => {
             currentIndex++;
+            points = points + 50
+            point.innerText = `${points} Points`
             showNextQuestion();
-        }, 1000); // Show next question after 1 second
+        }, 1000); 
     } else {
         btn.classList.add("wrong");
+        popUp.gameOver()
         setTimeout(() => {
-            alert("❌ Wrong! Game will restart.");
-            fetchData(); // Restart the game
+            fetchData(); 
         }, 1000);
     }
 
@@ -82,3 +88,38 @@ function selectOption(btn, correctAns){
 
 // Start the game
 fetchData();
+
+
+const popUp = {
+    gameOver: function(){
+        const endGame = document.querySelector(".gameContainter");        
+        const quiteBtn = document.getElementById("quiteBtn");
+        endGame.style.visibility = "visible";
+            
+        // when player wants to continue    
+
+        quiteBtn.addEventListener("click",()=>{
+            window.location.href = "../HTML/start.html";
+            
+
+        })
+
+
+
+    } 
+}
+
+// when user click start button
+function startBtn(){
+    window.addEventListener("DOMContentLoaded", function () {
+        fetchData(); 
+});   
+}
+
+const continueBtn = document.getElementById("continueBtn").addEventListener("click", function(){
+    const endGame = document.querySelector(".gameContainter");        
+    endGame.style.visibility = "hidden";
+    
+    showNextQuestion()
+            
+})

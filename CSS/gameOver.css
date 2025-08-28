@@ -21,7 +21,7 @@
     height: 100vh;
 }
 
-main{
+.over{
     position: fixed;
     top: 50%;
     left: 50%;
@@ -29,7 +29,7 @@ main{
 }
 
 
-.mainContainter{
+.gameContainter{
     width: 100%;
     max-width: 35rem;
     display: flex;
@@ -40,7 +40,9 @@ main{
     padding: 2rem 2rem;
     border-radius: .5rem ;
     background: var(--textColor);
-    box-shadow: 2rem 1.2rem 2.5rem #100f0f;
+    box-shadow: 1rem 1.2rem 2.5rem #100f0f;
+    z-index: -1;
+    visibility: hidden;
 }
 
 h1{
@@ -72,7 +74,7 @@ p{
     gap: 3rem;
 }
 
-.actionContainer button{
+.actionContainer #continueBtn{
     width:10rem ;
     font-size: 1.5rem;
     padding: .7rem;
@@ -84,13 +86,14 @@ p{
     color: var(--textColor);
 }
 
-button:hover{
-    border: .3rem solid #1f1c37;
-    outline: none;
+#continueBtn:hover{
+
     background-image: radial-gradient(#3338A0,#1f1c37);
-    color: var(--textColor);
 }
 
+.actionContainer button{
+    padding: 1rem 2rem;
+}
 #quiteBtn{
     border: .3rem solid #f40707;
     outline: none;
