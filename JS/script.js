@@ -2,6 +2,12 @@ let allTrivia = [];
 let currentIndex = 0;    
 let points = 0 
 
+const pontText = document.querySelector(".pontText");
+const point = document.getElementById("points");
+
+point.innerText = `${points} Points`;
+pontText.innerText = `${points}`;
+
 // Fetch all trivia at once and start game
 function fetchData(){
     return fetch("https://opentdb.com/api.php?amount=4&category=10&difficulty=easy&type=multiple")
@@ -24,6 +30,7 @@ function showNextQuestion() {
         alert(" You've completed all questions!");
         return;
     }
+
 
     const trivia = allTrivia[currentIndex];
 
@@ -59,9 +66,7 @@ function triviaDisplay(question, wrongAns, rightAns){
 }
 
 // Handle correct/wrong answer
-function selectOption(btn, correctAns){
-    const point = document.getElementById("points");
-    
+function selectOption(btn, correctAns){    
 
     const selected = btn.innerText;
 
@@ -76,6 +81,7 @@ function selectOption(btn, correctAns){
     } else {
         btn.classList.add("wrong");
         popUp.gameOver()
+
         setTimeout(() => {
             fetchData(); 
         }, 1000);
@@ -111,15 +117,14 @@ const popUp = {
 
 // when user click start button
 function startBtn(){
-    window.addEventListener("DOMContentLoaded", function () {
         fetchData(); 
-});   
+   
 }
 
-const continueBtn = document.getElementById("continueBtn").addEventListener("click", function(){
+const continueBtn = document.getElementById("continueBtn")
+continueBtn.addEventListener("click", function(){
     const endGame = document.querySelector(".gameContainter");        
     endGame.style.visibility = "hidden";
-    
     showNextQuestion()
             
 })
